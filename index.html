@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>HalalFinder</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">Bay Area halal finder</p>
+      <h1>HalalFinder</h1>
+    </div>
+    <button id="pickButton" class="ghost-button" type="button">🎲 Pick For Me</button>
+  </header>
+
+  <section class="toolbar">
+    <div class="toolbar-row toolbar-row-main">
+      <div class="search-wrap">
+        <input id="searchInput" type="search" placeholder="Search restaurant, city, dish, or comment">
+      </div>
+      <button id="locateButton" class="secondary-button" type="button">Use My Location</button>
+      <button id="clearButton" class="secondary-button" type="button">Clear</button>
+    </div>
+
+    <div class="toolbar-row toolbar-row-filters">
+      <label>
+        <span>Distance</span>
+        <select id="distanceFilter">
+          <option value="">Any distance</option>
+          <option value="3">Within 3 mi</option>
+          <option value="5">Within 5 mi</option>
+          <option value="10">Within 10 mi</option>
+          <option value="20">Within 20 mi</option>
+          <option value="30">Within 30 mi</option>
+        </select>
+      </label>
+
+      <label>
+        <span>City</span>
+        <select id="cityFilter">
+          <option value="">All cities</option>
+        </select>
+      </label>
+
+      <label>
+        <span>Cuisine</span>
+        <select id="cuisineFilter">
+          <option value="">All cuisines</option>
+        </select>
+      </label>
+
+      <label>
+        <span>Ratings</span>
+        <select id="ratingFilter">
+          <option value="">All ratings</option>
+          <option value="4.5">4.5+ stars</option>
+          <option value="4.0">4.0+ stars</option>
+          <option value="3.5">3.5+ stars</option>
+        </select>
+      </label>
+
+      <label>
+        <span>Sort</span>
+        <select id="sortSelect">
+          <option value="distance">Distance</option>
+          <option value="rating">Rating</option>
+          <option value="reviews">Review count</option>
+          <option value="name">Name</option>
+          <option value="city">City</option>
+        </select>
+      </label>
+
+      <button id="sortDirection" class="secondary-button compact-button" type="button" aria-label="Toggle sort direction">↓</button>
+    </div>
+
+    <div class="toolbar-row toolbar-row-meta">
+      <div id="resultsMeta" class="results-meta">Loading restaurants…</div>
+    </div>
+  </section>
+
+  <main class="layout">
+    <section class="list-panel">
+      <div id="restaurantList" class="restaurant-list"></div>
+    </section>
+
+    <section class="map-panel">
+      <div id="map"></div>
+    </section>
+  </main>
+
+  <div id="modalBackdrop" class="modal-backdrop hidden">
+    <aside id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"></aside>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
